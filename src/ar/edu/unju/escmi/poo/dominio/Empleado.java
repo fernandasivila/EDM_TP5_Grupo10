@@ -1,6 +1,9 @@
 package ar.edu.unju.escmi.poo.dominio;
 
-//import ar.edu.unju.escmi.poo.dominio.Prestamo;
+import java.util.ArrayList;
+import java.time.LocalDate;
+
+import ar.edu.unju.escmi.poo.dominio.Prestamo;
 
 public class Empleado extends Usuario{
 	private String cargo;
@@ -13,14 +16,18 @@ public class Empleado extends Usuario{
 		this.sueldo = sueldo;
 	}
 	
-	/*public Prestamo buscarPrestamo(int dniSocio) {
-		return null;
-	}*/
-	
-	public void prestarLibro (Socio socio) {
-		
+	public Prestamo buscarPrestamo(int dniSocio) {
+		pre
 	}
 	
+	public void prestarLibro (Socio socio, ArrayList<Libro> libros) {
+		LocalDate fechaActual = LocalDate.now();
+		int diasDePrestamo = 7;
+		int codigoSocio = socio.getCodigo();
+		LocalDate fechaVencimiento = fechaActual.plusDays(diasDePrestamo);
+		Prestamo prestamo = new Prestamo(fechaActual,fechaVencimiento, true, codigoSocio, libros);
+	}
+
 	/*public Libro buscarLibro (string titulo) {
 		return null;
 	}*/
