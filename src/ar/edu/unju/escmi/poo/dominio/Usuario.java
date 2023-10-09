@@ -54,6 +54,6 @@ public abstract class Usuario {
 		this.telefono = telefono;
 	}
 	
-	
+	public abstract void mostrarDatos();
 
 }

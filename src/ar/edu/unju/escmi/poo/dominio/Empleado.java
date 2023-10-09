@@ -17,7 +17,8 @@ public class Empleado extends Usuario{
 	}
 	
 	public Prestamo buscarPrestamo(int dniSocio) {
-		pre
+		//pre
+		return null;
 	}
 	
 	public void prestarLibro (Socio socio, ArrayList<Libro> libros) {
@@ -46,6 +47,16 @@ public class Empleado extends Usuario{
 
 	public void setSueldo(float sueldo) {
 		this.sueldo = sueldo;
+	}
+
+	@Override
+	public void mostrarDatos() {
+		System.out.println("DNI: "+this.dni);
+		System.out.println("Nombre: "+this.nombre);
+		System.out.println("Cargo: "+this.cargo);
+		System.out.println("Sueldo: "+this.sueldo);
+		System.out.println("Direccion: "+this.direccion);
+		System.out.println("Telefono: "+this.telefono);
 	}
 	
 	

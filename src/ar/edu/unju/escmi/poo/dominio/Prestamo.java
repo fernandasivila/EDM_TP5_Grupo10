@@ -17,7 +17,7 @@ public class Prestamo {
 		this.fechaInicio = fechaInicio;
 		this.codigoSocio = codigoSocio;
 		this.fechaVencimiento = fechaVencimiento;
-		this.estado = true;
+		this.estado = true; //prestamo activo
 		this.libros = new ArrayList<>();
 	}
 	public Prestamo(LocalDate fechaVencimiento, int codigoSocio) {

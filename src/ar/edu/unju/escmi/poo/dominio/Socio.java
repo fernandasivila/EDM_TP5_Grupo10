@@ -8,10 +8,11 @@ public class Socio extends Usuario{
 		this.codigo = codigo;
 	}
 	
+	@Override
 	public void mostrarDatos() {
+		System.out.println("Codigo: " + this.codigo);
 		System.out.println("DNI: " + this.dni);
 		System.out.println("Nombre: " + this.nombre);
-		System.out.println("Cargo: " + this.codigo);
 		System.out.println("Direccion: " + this.direccion);
 		System.out.println("Telefono: " + this.telefono);
 	}
