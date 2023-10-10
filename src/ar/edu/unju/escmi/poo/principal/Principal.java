@@ -16,6 +16,7 @@ import ar.edu.unju.escmi.poo.dominio.Empleado;
 import ar.edu.unju.escmi.poo.dominio.Libro;
 import ar.edu.unju.escmi.poo.dominio.Prestamo;
 import ar.edu.unju.escmi.poo.dominio.Socio;
+import ar.edu.unju.escmi.poo.dominio.Usuario;
 
 public class Principal {
 
@@ -35,7 +36,7 @@ public class Principal {
 			System.out.println("3) Realizar un prestamo");
 			System.out.println("4) Mostrar prestamos vencidos");
 			System.out.println("5) Mostrar prestamo de un socio");
-			System.out.println("6) Mostrar los libros con estado disponible");
+			System.out.println("6) Mostrar los libros disponibles");
 			System.out.println("7) Agregar un socio");
 			System.out.println("8) Exit");
 			System.out.println("******************************");
@@ -44,25 +45,17 @@ public class Principal {
 			
 			switch(op) {
 			case 1:
-				int codigoSocio;
-				System.out.println("Ingrese el codigo de socio: ");
-				codigoSocio=sc.nextInt();
-				Socio socioEncontrado = CollectionUsuario.buscarSocio(codigoSocio);
-				if(socioEncontrado != null ) {
-					socioEncontrado.mostrarDatos();
-				}else {
-					System.out.println("No se ha encontrado ningun socio con ese codigo");
+				ArrayList<Usuario> socios = CollectionUsuario.listarSocios();
+				for(Usuario s: socios) {
+					s.mostrarDatos();
+					System.out.println();
 				}
 				break;
 			case 2:
-				int dniEmpleado;
-				System.out.println("Ingrese el DNI del empleado: ");
-				dniEmpleado=sc.nextInt();
-				Empleado empleadoEncontrado = CollectionUsuario.buscarEmpleado(dniEmpleado);
-				if(empleadoEncontrado != null ) {
-					empleadoEncontrado.mostrarDatos();
-				}else {
-					System.out.println("No se ha encontrado el DNI");
+				ArrayList<Usuario> empleados = CollectionUsuario.listarEmpleados();
+				for(Usuario e:empleados) {
+					e.mostrarDatos();
+					System.out.println();
 				}
 				break;
 			case 3:
@@ -72,8 +65,8 @@ public class Principal {
 				ArrayList<Libro> librosEncargados = new ArrayList<Libro>();
 				
 				System.out.println("Codigo del socio: ");
-				codigoSocio=sc.nextInt();
-				socioEncontrado = CollectionUsuario.buscarSocio(codigoSocio);
+				int codigoSocio=sc.nextInt();
+				Socio socioEncontrado = CollectionUsuario.buscarSocio(codigoSocio);
 				if(socioEncontrado!=null) {
 					do {
 						sc.nextLine();
