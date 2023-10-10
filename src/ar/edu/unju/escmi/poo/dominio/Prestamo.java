@@ -13,7 +13,7 @@ public class Prestamo {
 	private ArrayList<Libro> libros;
 	//NOTA: Implementar libros.
 	
-	public Prestamo(LocalDate fechaInicio, LocalDate fechaVencimiento, int codigoSocio) {
+	public Prestamo(LocalDate fechaInicio, LocalDate fechaVencimiento, boolean estado, int codigoSocio, ArrayList<Libro> libros) {
 		this.fechaInicio = fechaInicio;
 		this.codigoSocio = codigoSocio;
 		this.fechaVencimiento = fechaVencimiento;

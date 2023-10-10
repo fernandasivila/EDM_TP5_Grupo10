@@ -17,7 +17,7 @@ public class Empleado extends Usuario{
 	}
 	
 	public Prestamo buscarPrestamo(int dniSocio) {
-		pre
+		return null;
 	}
 	
 	public void prestarLibro (Socio socio, ArrayList<Libro> libros) {
