@@ -30,17 +30,13 @@ public abstract class CollectionUsuario {
     public static void agregarUsuario(Usuario usuario) {
         usuarios.add(usuario);
     }
-
-    /*public static void eliminarUsuario(Usuario usuario) {
-        usuarios.remove(usuario);
-    }*/
     
     public static Empleado buscarEmpleado(int dni) {
     	
-    	for(int i=0; i<usuarios.size(); i++) {
-    		if(usuarios.get(i) instanceof Empleado) {
-    			if(usuarios.get(i).getDni() == dni) {
-    				return (Empleado) usuarios.get(i);
+    	for(Usuario usuario :usuarios) {
+    		if(usuario instanceof Empleado) {
+    			if(usuario.getDni() == dni) {
+    				return (Empleado) usuario;
     			}
     		}
     	}
@@ -50,10 +46,10 @@ public abstract class CollectionUsuario {
 	
 	public static Socio buscarSocio(int codigo) {
 		
-		for(int i=0; i<usuarios.size(); i++) {
-    		if(usuarios.get(i) instanceof Socio) {
-    			if(((Socio) usuarios.get(i)).getCodigo() == codigo) {
-    				return (Socio) usuarios.get(i);
+		for(Usuario usuario :usuarios) {
+    		if(usuario instanceof Socio) {
+    			if(((Socio) usuario).getCodigo() == codigo) {
+    				return (Socio) usuario;
     			}
     		}
     	}

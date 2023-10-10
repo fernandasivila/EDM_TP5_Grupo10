@@ -132,7 +132,7 @@ public class Principal {
 			case 5:
 				System.out.println("Empleado (DNI): ");
 				dniE=sc.nextInt();
-				Empleado emp = CollectionUsuario.buscarEmpleado(dniE);
+				emp = CollectionUsuario.buscarEmpleado(dniE);
 				
 				if(emp!=null) { 
 					System.out.println("Codigo del socio: ");
