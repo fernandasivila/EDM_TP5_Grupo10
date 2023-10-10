@@ -1,6 +1,6 @@
 package ar.edu.unju.escmi.poo.principal;
 
-
+import java.util.List;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -69,7 +69,7 @@ public class Principal {
 				String titulo;
 				char rst;
 				Libro libroEncontrado;
-				ArrayList<Libro> librosEncargados = null;
+				ArrayList<Libro> librosEncargados = new ArrayList<Libro>();
 				
 				System.out.println("Codigo del socio: ");
 				codigoSocio=sc.nextInt();
@@ -83,6 +83,8 @@ public class Principal {
 						 libroEncontrado = CollectionLibro.buscarLibro(titulo);
 						 if(libroEncontrado!=null) {
 							 librosEncargados.add(libroEncontrado);
+						 }else {
+							 System.out.println("Libro no encontrado");
 						 }
 						System.out.println("Desea otro libro? (s/n): ");
 						rst=sc.next().charAt(0);
@@ -97,7 +99,7 @@ public class Principal {
 					String ffinal = sc.next();
 					LocalDate fechaFinal = LocalDate.parse(ffinal, DateTimeFormatter.ISO_DATE);
 					
-					Prestamo prestamo = new Prestamo(fechaInicio,fechaFinal,codigoSocio); //donde paso el array de libros??
+					Prestamo prestamo = new Prestamo(fechaInicio,fechaFinal,codigoSocio, librosEncargados); //donde paso el array de libros??
 					CollectionPrestamo.agregarPrestamo(prestamo); 
 					
 					for(Libro libro: librosEncargados) {
@@ -114,8 +116,7 @@ public class Principal {
 			case 5:
 				System.out.println("Codigo del socio: ");
 				codigoSocio = sc.nextInt();
-				socioEncontrado = CollectionUsuario.buscarSocio(codigoSocio);
-				socioEncontrado.mostrarPrestamos();
+				CollectionPrestamo.buscarPrestamo(codigoSocio);
 				break;
 			case 6:
 				CollectionLibro.listarLibrosDisponibles();
@@ -126,10 +127,12 @@ public class Principal {
 				
 				System.out.println("Codigo: ");
 				codigo = sc.nextInt();
+				sc.nextLine();
 				System.out.println("Nombre: ");
 				nombre=sc.nextLine();
 				System.out.println("DNI: ");
 				dni=sc.nextInt();
+				sc.nextLine();
 				System.out.println("Direccion: ");
 				direccion=sc.nextLine();
 				System.out.println("Telefono: ");

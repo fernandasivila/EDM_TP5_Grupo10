@@ -13,19 +13,19 @@ public class Prestamo {
 	private ArrayList<Libro> libros;
 	//NOTA: Implementar libros.
 	
-	public Prestamo(LocalDate fechaInicio, LocalDate fechaVencimiento, int codigoSocio) {
+	public Prestamo(LocalDate fechaInicio, LocalDate fechaVencimiento, int codigoSocio, ArrayList<Libro> libros) {
 		this.fechaInicio = fechaInicio;
 		this.codigoSocio = codigoSocio;
 		this.fechaVencimiento = fechaVencimiento;
 		this.estado = true; //prestamo activo
-		this.libros = new ArrayList<>();
+		this.libros = libros;
 	}
-	public Prestamo(LocalDate fechaVencimiento, int codigoSocio) {
+	public Prestamo(LocalDate fechaVencimiento, int codigoSocio, ArrayList<Libro> libros) {
 		this.fechaInicio = LocalDate.now();
 		this.codigoSocio = codigoSocio;
 		this.fechaVencimiento = fechaVencimiento;
 		this.estado = true;
-		this.libros = new ArrayList<>();
+		this.libros = libros;
 	}
 
 	public int calcularDias() {
@@ -73,4 +73,10 @@ public class Prestamo {
 	public void setCodigoSocio(int codigoSocio) {
 		this.codigoSocio = codigoSocio;
 	}
+	@Override
+	public String toString() {
+		return "Prestamo [fechaInicio=" + fechaInicio + ", fechaVencimiento=" + fechaVencimiento + ", estado=" + estado
+				+ ", codigoSocio=" + codigoSocio + ", libros=" + libros + "]";
+	}
+	
 }

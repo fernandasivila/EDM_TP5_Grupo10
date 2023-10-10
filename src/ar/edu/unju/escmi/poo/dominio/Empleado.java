@@ -26,7 +26,7 @@ public class Empleado extends Usuario{
 		int diasDePrestamo = 7;
 		int codigoSocio = socio.getCodigo();
 		LocalDate fechaVencimiento = fechaActual.plusDays(diasDePrestamo);
-		Prestamo prestamo = new Prestamo(fechaActual,fechaVencimiento, true, codigoSocio, libros);
+		Prestamo prestamo = new Prestamo(fechaActual,fechaVencimiento, codigoSocio, libros);
 	}
 
 	/*public Libro buscarLibro (string titulo) {

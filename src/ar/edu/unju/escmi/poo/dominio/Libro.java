@@ -65,6 +65,12 @@ public class Libro {
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
+
+	@Override
+	public String toString() {
+		return "Libro [titulo=" + titulo + ", autor=" + autor + ", isbn=" + isbn + ", genero=" + genero
+				+ ", anioPublicacion=" + anioPublicacion + ", estado=" + estado + "]";
+	}
 	
 	
 }

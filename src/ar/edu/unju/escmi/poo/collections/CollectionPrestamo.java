@@ -13,11 +13,11 @@ public abstract class CollectionPrestamo {
 		prestamos.add(prestamo);
 	}
 	
-	public static Prestamo buscarPrestamo(int codigoSocio){
+	public static void buscarPrestamo(int codigoSocio){
 		for(Prestamo prestamo : prestamos) {
 			if( prestamo.getCodigoSocio()== codigoSocio )
-				return prestamo;
+				System.out.println(prestamo);
 		}
-		return null;
+		
 	}
 }
