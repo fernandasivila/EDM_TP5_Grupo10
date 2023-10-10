@@ -13,11 +13,12 @@ public abstract class CollectionPrestamo {
 		prestamos.add(prestamo);
 	}
 	
-	public static void buscarPrestamo(int codigoSocio){
+	public static ArrayList<Prestamo> buscarPrestamo(int codigoSocio){
+		ArrayList<Prestamo> prestamosHechos = new ArrayList<>();
 		for(Prestamo prestamo : prestamos) {
 			if( prestamo.getCodigoSocio()== codigoSocio )
-				System.out.println(prestamo);
+				prestamosHechos.add(prestamo);
 		}
-		
+		return prestamosHechos;
 	}
 }

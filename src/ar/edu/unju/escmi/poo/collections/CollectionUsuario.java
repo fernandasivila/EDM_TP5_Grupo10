@@ -17,7 +17,7 @@ public abstract class CollectionUsuario {
 		Socio usuario2 = new Socio(46472192,"Marisel","San Salvador de Jujuy","38843995445",2);
 		Empleado usuario3= new Empleado(45761400,"Maxi","Perico","3884399244","bibliotecario",(float) 2450.10);
 		Socio usuario4 = new Socio(45761111,"Max","El Carmen","38843997889",3);
-		Empleado usuario5 = new Empleado(45761468,"Evelin","Humahuaca","3884391534","bibliotecario",(float) 2950.40);
+		Empleado usuario5 = new Empleado(45761468,"Evelin","Salta","3884391534","bibliotecario",(float) 2950.40);
 		
 		usuarios.add(usuario1);
 		usuarios.add(usuario2);

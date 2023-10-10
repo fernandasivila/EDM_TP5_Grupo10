@@ -73,10 +73,5 @@ public class Prestamo {
 	public void setCodigoSocio(int codigoSocio) {
 		this.codigoSocio = codigoSocio;
 	}
-	@Override
-	public String toString() {
-		return "Prestamo [fechaInicio=" + fechaInicio + ", fechaVencimiento=" + fechaVencimiento + ", estado=" + estado
-				+ ", codigoSocio=" + codigoSocio + ", libros=" + libros + "]";
-	}
 	
 }

@@ -30,16 +30,16 @@ public class Principal {
 	
 		int op;
 		do {
-			System.out.println("*************MENU*************");
+			System.out.println("*****************MENU*****************");
 			System.out.println("1) Mostrar socios");
 			System.out.println("2) Mostrar empleados");
 			System.out.println("3) Realizar un prestamo");
 			System.out.println("4) Mostrar prestamos vencidos");
-			System.out.println("5) Mostrar prestamo de un socio");
+			System.out.println("5) Mostrar prestamos de un socio");
 			System.out.println("6) Mostrar los libros disponibles");
 			System.out.println("7) Agregar un socio");
 			System.out.println("8) Exit");
-			System.out.println("******************************");
+			System.out.println("**************************************");
 			System.out.println("Seleccione una opcion: ");
 			op = sc.nextInt();
 			
@@ -68,10 +68,11 @@ public class Principal {
 				int codigoSocio=sc.nextInt();
 				Socio socioEncontrado = CollectionUsuario.buscarSocio(codigoSocio);
 				if(socioEncontrado!=null) {
+					System.out.println("Libros disponibles:");
+					CollectionLibro.listarLibrosDisponibles();
 					do {
 						sc.nextLine();
-						CollectionLibro.listarLibrosDisponibles();
-						System.out.println("Titulo del libro: ");
+						System.out.println("\nTitulo del libro: ");
 						titulo=sc.nextLine();
 						 libroEncontrado = CollectionLibro.buscarLibro(titulo);
 						 if(libroEncontrado!=null) {
@@ -92,12 +93,16 @@ public class Principal {
 					String ffinal = sc.next();
 					LocalDate fechaFinal = LocalDate.parse(ffinal, DateTimeFormatter.ISO_DATE);
 					
-					Prestamo prestamo = new Prestamo(fechaInicio,fechaFinal,codigoSocio, librosEncargados); //donde paso el array de libros??
+					Prestamo prestamo = new Prestamo(fechaInicio,fechaFinal,codigoSocio, librosEncargados); 
 					CollectionPrestamo.agregarPrestamo(prestamo); 
 					
+					System.out.println("Se ha registrado el prestamo exitosamente");
+					
+					//Actualizacion de la lista de libros no disponibles
 					for(Libro libro: librosEncargados) {
-						libro.setEstado(false); //libros que ya no estarán disponibles
+						libro.setEstado(false);
 					}
+					
 				}else {
 					System.out.println("El socio no existe");
 				}
@@ -105,11 +110,24 @@ public class Principal {
 				break;
 			case 4:
 				CollectionPrestamo.prestamos.stream().filter(prestamo -> prestamo.isEstado() == false).forEach(Prestamo::mostrarDatos);
+				
 				break;
 			case 5:
 				System.out.println("Codigo del socio: ");
 				codigoSocio = sc.nextInt();
-				CollectionPrestamo.buscarPrestamo(codigoSocio);
+				if(CollectionUsuario.buscarSocio(codigoSocio)!=null) {
+					ArrayList<Prestamo> prestamosSocio = CollectionPrestamo.buscarPrestamo(codigoSocio);
+					if(prestamosSocio.isEmpty()) {
+						System.out.println("El socio no ha realizado ningun prestamo");
+					}else {
+						for(Prestamo p:prestamosSocio) {
+							p.mostrarDatos();
+						}
+					}
+				}
+				else {
+					System.out.println("El socio no existe");
+				}
 				break;
 			case 6:
 				CollectionLibro.listarLibrosDisponibles();
