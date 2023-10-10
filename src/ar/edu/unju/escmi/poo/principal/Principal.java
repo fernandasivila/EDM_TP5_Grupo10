@@ -1,11 +1,8 @@
 package ar.edu.unju.escmi.poo.principal;
 
-import java.util.List;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -59,62 +56,72 @@ public class Principal {
 				}
 				break;
 			case 3:
+				int dniE;
 				String titulo;
 				char rst;
 				Libro libroEncontrado;
 				ArrayList<Libro> librosEncargados = new ArrayList<Libro>();
 				
-				System.out.println("Codigo del socio: ");
-				int codigoSocio=sc.nextInt();
-				Socio socioEncontrado = CollectionUsuario.buscarSocio(codigoSocio);
-				if(socioEncontrado!=null) {
-					System.out.println("Libros disponibles:");
-					CollectionLibro.listarLibrosDisponibles();
-					do {
-						sc.nextLine();
-						System.out.println("\nTitulo del libro: ");
-						titulo=sc.nextLine();
-						 libroEncontrado = CollectionLibro.buscarLibro(titulo);
-						 if(libroEncontrado!=null) {
-							 librosEncargados.add(libroEncontrado);
-						 }else {
-							 System.out.println("Libro no encontrado");
-						 }
-						System.out.println("Desea otro libro? (s/n): ");
-						rst=sc.next().charAt(0);
-					}while(rst != 'n');
-					
-					//mandar los libros al prestamo
-					System.out.println("Fecha de inicio de prestamo (yyyy-mm-dd): ");
-					String inicio = sc.next();
-					LocalDate fechaInicio = LocalDate.parse(inicio, DateTimeFormatter.ISO_DATE);
-					
-					System.out.println("Fecha de vencimiento de prestamo (yyyy-mm-dd):"); 
-					String ffinal = sc.next();
-					LocalDate fechaFinal = LocalDate.parse(ffinal, DateTimeFormatter.ISO_DATE);
-					
-					Prestamo prestamo = new Prestamo(fechaInicio,fechaFinal,codigoSocio, librosEncargados); 
-					CollectionPrestamo.agregarPrestamo(prestamo); 
-					
-					System.out.println("Se ha registrado el prestamo exitosamente");
-					
-					//Actualizacion de la lista de libros no disponibles
-					for(Libro libro: librosEncargados) {
-						libro.setEstado(false);
-					}
-					
-				}else {
-					System.out.println("El socio no existe");
-				}
+				System.out.println("Empleado (DNI): ");
+				dniE=sc.nextInt();
+				Empleado emp = CollectionUsuario.buscarEmpleado(dniE);
 				
+				if(emp!=null) {
+				
+					System.out.println("Codigo del socio: ");
+					int codigoSocio=sc.nextInt();
+					Socio socioEncontrado = CollectionUsuario.buscarSocio(codigoSocio);
+					if(socioEncontrado!=null) {
+						System.out.println("Libros disponibles:");
+						CollectionLibro.listarLibrosDisponibles();
+						do {
+							sc.nextLine();
+							System.out.println("\nTitulo del libro: ");
+							titulo=sc.nextLine();
+							libroEncontrado = emp.buscarLibro(titulo);
+							//ibroEncontrado = CollectionLibro.buscarLibro(titulo);
+							 if(libroEncontrado!=null) {
+								 librosEncargados.add(libroEncontrado);
+							 }else {
+								 System.out.println("Libro no encontrado");
+							 }
+							System.out.println("Desea otro libro? (s/n): ");
+							rst=sc.next().charAt(0);
+						}while(rst != 'n');
+						
+						emp.prestarLibro(socioEncontrado, librosEncargados);
+						
+						System.out.println("Se ha registrado el prestamo exitosamente");
+						
+						//Actualizacion de la lista de libros no disponibles
+						for(Libro libro: librosEncargados) {
+							libro.setEstado(false);
+						}
+						
+					}else {
+						System.out.println("El socio no existe");
+					}
+				}else {
+					System.out.println("DENEGADO. Solo los empleados pueden realizar prestamo");
+				}
 				break;
 			case 4:
-				CollectionPrestamo.prestamos.stream().filter(prestamo -> prestamo.isEstado() == false).forEach(Prestamo::mostrarDatos);
+				//CollectionPrestamo.prestamos.stream().filter(prestamo -> prestamo.isEstado() == false).forEach();
+				//NOTA: como y cuando calcular los prestamos vencido
 				
+				ArrayList<Prestamo> prestamosVencidos = CollectionPrestamo.prestamosVencidos();
+				if(prestamosVencidos.isEmpty())
+					System.out.println("No hay prestamos vencidos");
+				else {
+					for(Prestamo p:prestamosVencidos) {
+						p.mostrarDatos();
+					}
+				}
 				break;
 			case 5:
+				//Desarrollar con empleado.buscarPrestamo 
 				System.out.println("Codigo del socio: ");
-				codigoSocio = sc.nextInt();
+				int codigoSocio = sc.nextInt();
 				if(CollectionUsuario.buscarSocio(codigoSocio)!=null) {
 					ArrayList<Prestamo> prestamosSocio = CollectionPrestamo.buscarPrestamo(codigoSocio);
 					if(prestamosSocio.isEmpty()) {

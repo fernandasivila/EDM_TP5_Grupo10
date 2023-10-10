@@ -34,6 +34,8 @@ public class Prestamo {
 		return dias;
 	}
 	public void mostrarDatos() {
+		this.actualizarDatos();
+		
 		System.out.println("Codigo de Socio: "+this.getCodigoSocio());
 		System.out.println("Fecha de Inicio: "+this.getFechaInicio());
 		System.out.println("Fecha de Vencimiento: "+this.getFechaVencimiento());
@@ -73,5 +75,6 @@ public class Prestamo {
 	public void setCodigoSocio(int codigoSocio) {
 		this.codigoSocio = codigoSocio;
 	}
+	
 	
 }

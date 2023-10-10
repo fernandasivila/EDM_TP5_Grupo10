@@ -16,20 +16,6 @@ public abstract class CollectionLibro {
 			Libro libro5 = new Libro("Don Quijote de La Mancha", "Miguel de Cervantes", "1005", "Novela", 1605, true);
 			Libro libro6 = new Libro("Antes de Diciembre", "Joana Marcus", "1006", "Romance", 2009, true);
 			Libro libro7 = new Libro("Ciudades de humo", "Joana Marcus", "1007", "Ficcion", 2013, true);
-			/*Libro libro8 = new Libro("El principito", "Antoine de Saint-Exupery", "1001", "Ficcion", 1943, true);
-			Libro libro9 = new Libro("El principito", "Antoine de Saint-Exupery", "1001", "Ficcion", 1943, true);
-			Libro libro10 = new Libro("El principito", "Antoine de Saint-Exupery", "1001", "Ficcion", 1943, true);
-			Libro libro11 = new Libro("El principito", "Antoine de Saint-Exupery", "1001", "Ficcion", 1943, true);
-			Libro libro12 = new Libro("El principito", "Antoine de Saint-Exupery", "1001", "Ficcion", 1943, true);
-			Libro libro13 = new Libro("El principito", "Antoine de Saint-Exupery", "1001", "Ficcion", 1943, true);
-			Libro libro14 = new Libro("El principito", "Antoine de Saint-Exupery", "1001", "Ficcion", 1943, true);
-			Libro libro15 = new Libro("El principito", "Antoine de Saint-Exupery", "1001", "Ficcion", 1943, true);
-			Libro libro16 = new Libro("El principito", "Antoine de Saint-Exupery", "1001", "Ficcion", 1943, true);
-			Libro libro17 = new Libro("El principito", "Antoine de Saint-Exupery", "1001", "Ficcion", 1943, true);
-			Libro libro18 = new Libro("El principito", "Antoine de Saint-Exupery", "1001", "Ficcion", 1943, true);
-			Libro libro19 = new Libro("El principito", "Antoine de Saint-Exupery", "1001", "Ficcion", 1943, true);
-			Libro libro20 = new Libro("El principito", "Antoine de Saint-Exupery", "1001", "Ficcion", 1943, true);
-			*/
 			
 			libros.add(libro1);
 			libros.add(libro2);

@@ -21,4 +21,14 @@ public abstract class CollectionPrestamo {
 		}
 		return prestamosHechos;
 	}
+	public static ArrayList<Prestamo> prestamosVencidos() {
+		ArrayList<Prestamo> prestamosVencidos = new ArrayList<>();
+		for(Prestamo prestamo: prestamos) {
+			prestamo.actualizarDatos();
+			if(prestamo.isEstado()==false) {
+				prestamosVencidos.add(prestamo);
+			}
+		}
+		return prestamosVencidos;
+	}
 }

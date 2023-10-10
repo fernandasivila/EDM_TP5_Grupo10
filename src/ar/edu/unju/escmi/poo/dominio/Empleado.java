@@ -3,6 +3,8 @@ package ar.edu.unju.escmi.poo.dominio;
 import java.util.ArrayList;
 import java.time.LocalDate;
 
+import ar.edu.unju.escmi.poo.collections.CollectionLibro;
+import ar.edu.unju.escmi.poo.collections.CollectionPrestamo;
 import ar.edu.unju.escmi.poo.dominio.Prestamo;
 
 public class Empleado extends Usuario{
@@ -27,11 +29,14 @@ public class Empleado extends Usuario{
 		int codigoSocio = socio.getCodigo();
 		LocalDate fechaVencimiento = fechaActual.plusDays(diasDePrestamo);
 		Prestamo prestamo = new Prestamo(fechaActual,fechaVencimiento, codigoSocio, libros);
+		
+		CollectionPrestamo.agregarPrestamo(prestamo);
 	}
 
-	/*public Libro buscarLibro (string titulo) {
-		return null;
-	}*/
+	public Libro buscarLibro (String titulo) {
+		Libro libro = CollectionLibro.buscarLibro(titulo);
+		return libro;
+	}
 
 	public String getCargo() {
 		return cargo;
