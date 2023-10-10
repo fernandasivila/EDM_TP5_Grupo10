@@ -62,16 +62,21 @@ public abstract class CollectionUsuario {
 		
 	}
 	
-	public static void listarEmpleados() {
-		
+	public static ArrayList<Usuario> listarEmpleados(){
+		ArrayList<Usuario> empleados = new ArrayList<>();
+		for(Usuario usuario : usuarios) {
+			if(usuario instanceof Empleado)
+				empleados.add(usuario);
+		}
+		return empleados;
 	}
-
-	public static void listarSocio() {
-		
-		for(int i=0; i<usuarios.size(); i++) {
-    		if(usuarios.get(i) instanceof Socio) {
-    			
-    		}
-    	}
+	
+	public static ArrayList<Usuario> listarSocios(){
+		ArrayList<Usuario> socios = new ArrayList<>();
+		for(Usuario usuario : usuarios) {
+			if(usuario instanceof Socio)
+				socios.add(usuario);
+		}
+		return socios;
 	}
 }
