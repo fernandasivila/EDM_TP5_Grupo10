@@ -17,10 +17,6 @@ public class Socio extends Usuario{
 		System.out.println("Telefono: " + this.telefono);
 	}
 	
-	public void mostrarPrestamos() {
-		
-	}
-
 	public int getCodigo() {
 		return codigo;
 	}
