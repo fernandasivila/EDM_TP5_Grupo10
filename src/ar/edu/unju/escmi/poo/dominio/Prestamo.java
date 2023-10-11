@@ -11,7 +11,7 @@ public class Prestamo {
 	private boolean estado;
 	private int codigoSocio;
 	private ArrayList<Libro> libros;
-	//NOTA: Implementar libros.
+	
 	
 	public Prestamo(LocalDate fechaInicio, LocalDate fechaVencimiento, int codigoSocio, ArrayList<Libro> libros) {
 		this.fechaInicio = fechaInicio;

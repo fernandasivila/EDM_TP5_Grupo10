@@ -78,6 +78,7 @@ public class Principal {
 						System.out.println("Libros disponibles:");
 						CollectionLibro.listarLibrosDisponibles();
 						do {
+							rst='a';
 							sc.nextLine();
 							System.out.println("\nTitulo del libro: ");
 							titulo=sc.nextLine();
@@ -89,13 +90,20 @@ public class Principal {
 							 }else {
 								 System.out.println("Libro no encontrado");
 							 }
-							System.out.println("Desea otro libro? (s/n): ");
-							rst=sc.next().charAt(0);
+							 while(rst!='s'&&rst!='n') {
+								 System.out.println("Desea otro libro? (s/n): ");
+								 rst=sc.next().charAt(0);
+								 if(rst!='s'&&rst!='n') {
+									 System.out.println("Ingrese dato valido. Ingreso erroneo.");
+								 }
+							 }
+							
 							
 							if(cantidadLibrosPrestados == maximoLibrosPrestados) {
 								System.out.println("Se alcanzo el limite de libros para prestar");
+								rst='n';
 							}
-						}while(rst != 'n' || cantidadLibrosPrestados<=maximoLibrosPrestados);
+						}while(rst != 'n');
 						
 						System.out.println("Cuantos dias se prestaran los libros?: ");
 						diasPrestadosLosLibros= sc.nextInt();
@@ -117,8 +125,6 @@ public class Principal {
 				}
 				break;
 			case 4:
-				//CollectionPrestamo.prestamos.stream().filter(prestamo -> prestamo.isEstado() == false).forEach();
-				
 				
 				ArrayList<Prestamo> prestamosVencidos = CollectionPrestamo.prestamosVencidos();
 				if(prestamosVencidos.isEmpty())
@@ -130,6 +136,7 @@ public class Principal {
 				}
 				break;
 			case 5:
+				
 				System.out.println("Empleado (DNI): ");
 				dniE=sc.nextInt();
 				emp = CollectionUsuario.buscarEmpleado(dniE);
@@ -143,9 +150,11 @@ public class Principal {
 				}
 				
 				break;
+				
 			case 6:
 				CollectionLibro.listarLibrosDisponibles();
 				break;
+				
 			case 7:
 				int codigo,dni;
 				String nombre,direccion,telefono;
@@ -169,6 +178,7 @@ public class Principal {
 				
 				System.out.println("Se ha agregado el nuevo socio con exito");
 				break;
+				
 			case 8:
 				System.out.println("FIN DEL PROGRAMA :D");
 				break;
